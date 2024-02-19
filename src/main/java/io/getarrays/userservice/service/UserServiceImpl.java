@@ -1,11 +1,9 @@
 package io.getarrays.userservice.service;
 
-import io.getarrays.userservice.domain.Role;
-import io.getarrays.userservice.domain.User;
-import io.getarrays.userservice.repo.RoleRepo;
-import io.getarrays.userservice.repo.UserRepo;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,9 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import io.getarrays.userservice.domain.User;
+import io.getarrays.userservice.repo.UserRepo;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Get Arrays (https://www.getarrays.io/)
@@ -26,7 +25,6 @@ import java.util.List;
 @Service @RequiredArgsConstructor @Transactional @Slf4j
 public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepo userRepo;
-    private final RoleRepo roleRepo;
     private final PasswordEncoder passwordEncoder;
 
     @Override
