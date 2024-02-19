@@ -18,11 +18,19 @@ import static javax.persistence.GenerationType.*;
  */
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class User {
-    @Id @GeneratedValue(strategy = AUTO)
+    @Id @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id")
     private Long id;
+    
+    @Column(name = "name")
     private String name;
+    
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "passwrd")
     private String password;
+    
     @ManyToMany(fetch = EAGER)
     private Collection<Role> roles = new ArrayList<>();
 }
